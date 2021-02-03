@@ -18,13 +18,19 @@ def index(request):
     for k, v in request.GET.items():
         if k in params:
             if k == params[0]:
-                if int(v) < min_limits:
-                    offset = int(v)
+                if v.isdigit() == True:
+                    if int(v) < min_limits:
+                        offset = int(v)
+                    else:
+                        offset = 0
                 else:
-                    offset = None
+                    offset = 0
             elif k == params[1]:
-                if int(v) < min_limits:
-                    limits = int(v)
+                if v.isdigit() == True:
+                    if int(v) < min_limits:
+                        limits = int(v)
+                    else:
+                        limits = min_limits
                 else:
                     limits = min_limits
             elif k == params[2]:
